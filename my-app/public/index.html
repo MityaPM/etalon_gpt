@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+  <title>React App</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script type="text/javascript">
+    function handleCredentialResponse(response) {
+      console.log("Encoded JWT ID token: " + response.credential);
+      // https://dev.alobanov11.ru/api/google/auth
+      fetch('https://dev.alobanov11.ru/api/google/auth', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ token: response.credential })
+      })
+        .then(res => res.json())
+        .then(result => { console.log(result); localStorage.setItem("etalonGptToken", result.jwt) })
+    }
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: "695314521943-mct930g3dobrmutls9t33fn89oeub0hv.apps.googleusercontent.com",
+        callback: handleCredentialResponse
+      });
+
+      if (Boolean(localStorage.getItem("etalonGptToken"))) {
+        return
+      }
+      else {
+        google.accounts.id.renderButton(
+          document.getElementById("buttonDiv"),
+          { theme: "outline", size: "large" }  // customization attributes
+        );
+        google.accounts.id.prompt(); // also display the One Tap dialog
+
+      }
+
+
+    }
+  </script>
+  <div id="root"></div>
+</body>
+
+</html>
