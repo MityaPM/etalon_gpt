@@ -36,7 +36,7 @@
   margin-right: 8px;
 }
 
-.message-form button {
+button {
   padding: 8px 16px;
   background-color: #007bff;
   color: #fff;
@@ -45,7 +45,7 @@
   cursor: pointer;
 }
 
-.message-form button:hover {
+button:hover {
   background-color: #0056b3;
 }
 

@@ -1,0 +1,44 @@
+input {
+  width: 300px;
+}
+
+textarea {
+  width: 600px;
+  height: 600px;
+}
+
+label {
+  padding-bottom: 5px;
+  font-size: 13px;
+}
+
+input {
+  margin-top: 3px;
+  padding: 15px;
+  font-size: 16px;
+  width: 300px;
+  border-radius: 3px;
+  border: 1px solid #dcdcdc;
+}
+
+.article {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+}
+
+.article > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+details {
+  margin-bottom: 15px;
+}
+
+.container {
+  width: 1000px;
+  margin: auto;
+}
