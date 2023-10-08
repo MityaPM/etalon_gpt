@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react"
+// import ReactQuill from "react-quill"
+// import "react-quill/dist/quill.snow.css"
 
 //Css
 import "./Article.css"
@@ -25,8 +27,6 @@ function Article(props) {
     if (reqCount === 0) {
       return
     }
-
-    console.log("Fetch!")
 
     axios
       .put(
@@ -144,6 +144,10 @@ function Article(props) {
         <textarea onChange={inputHandler} type="text" value={articleBody.text} name="text"></textarea>
         <h4>Англ:</h4>
         <textarea onChange={inputHandler} type="text" value={articleBody.text_eng} name="text_eng"></textarea>
+        {/* <h4>Рус:</h4>
+        <ReactQuill value={articleBody.text} name="text" style={{ width: "100%", height: "600px", marginBottom: "15px", overflow: "hidden" }} />
+        <h4>Англ:</h4>
+        <ReactQuill onChange={quillHandler} value={articleBody.text_eng} name="text_eng" style={{ width: "100%", height: "600px", marginBottom: "15px", overflow: "hidden" }} /> */}
       </details>
       <button type="submit" onClick={buttonHandler}>
         {isLoading ? "Сохраняем..." : "Сохранить"}
