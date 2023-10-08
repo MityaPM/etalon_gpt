@@ -30,7 +30,7 @@ function Article(props) {
 
     axios
       .put(
-        `http://localhost:3300/api/admin/articles/${articleBody.id}`,
+        `https://dev.alobanov11.ru/api/admin/articles/${articleBody.id}`,
         {
           data: articleBody
         },

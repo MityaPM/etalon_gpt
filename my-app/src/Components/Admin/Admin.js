@@ -15,7 +15,7 @@ function Admin() {
     }
 
     axios
-      .get("http://localhost:3300/api/admin/articles", {
+      .get("https://dev.alobanov11.ru/api/admin/articles", {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(res => setArticles(res.data))
