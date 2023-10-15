@@ -7,7 +7,6 @@ import "./Article.css"
 import axios from "axios"
 
 function Article(props) {
-  const token = localStorage.getItem("etalonGptToken")
   const [isLoading, setIsLoading] = useState(false)
   const [reqCount, setReqCount] = useState(0)
   const [articleBody, setArticleBody] = useState({
@@ -29,15 +28,9 @@ function Article(props) {
     }
 
     axios
-      .put(
-        `https://dev.alobanov11.ru/api/admin/articles/${articleBody.id}`,
-        {
-          data: articleBody
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` }
-        }
-      )
+      .put(`/api/admin/articles/${articleBody.id}`, {
+        data: articleBody
+      })
       .then(result => {
         alert("Обновления сохранены!")
         setIsLoading(false)

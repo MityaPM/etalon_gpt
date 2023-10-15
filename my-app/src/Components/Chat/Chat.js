@@ -3,7 +3,7 @@ import axios from "axios"
 import "./Chat.css"
 
 const Chat = () => {
-  const token = localStorage.getItem("etalonGptToken")
+  // const token = localStorage.getItem("etalonGptToken")
   const [isLoading, setIsLoading] = useState(false)
   const [req, setReq] = useState(0)
   const [messages, setMessages] = useState([])
@@ -39,13 +39,7 @@ const Chat = () => {
     setIsLoading(true)
 
     axios
-      .post(
-        "https://dev.alobanov11.ru/api/etalongpt",
-        { messages: messages },
-        {
-          headers: { Authorization: `Bearer ${token}` }
-        }
-      )
+      .post("/api/etalongpt", { messages: messages })
       .then(result => {
         setIsLoading(false)
         setMessages([...messages, result.data.answer])

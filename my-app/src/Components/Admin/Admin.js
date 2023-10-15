@@ -4,9 +4,8 @@ import axios from "axios"
 // Components
 import Article from "../Article/Article"
 
-function Admin() {
-  const token = localStorage.getItem("etalonGptToken")
-  const [loggedIn, setLoggedIn] = useState(Boolean(token))
+function Admin(props) {
+  const [loggedIn, setLoggedIn] = useState(Boolean(props.token))
   const [articles, setArticles] = useState([])
 
   useEffect(() => {
@@ -15,9 +14,7 @@ function Admin() {
     }
 
     axios
-      .get("https://dev.alobanov11.ru/api/admin/articles", {
-        headers: { Authorization: `Bearer ${token}` }
-      })
+      .get("/api/admin/articles")
       .then(res => setArticles(res.data))
       .catch(err => alert("Ошибка!"))
   }, [])

@@ -1,0 +1,43 @@
+.history {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.hat,
+.story {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: max-content;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  border: 1px solid rgb(54, 54, 54);
+  border-radius: 15px;
+}
+
+.hat span,
+.story span {
+  margin-right: 15px;
+  width: 100px;
+}
+
+.success,
+.fails,
+.id {
+  width: 25px !important;
+}
+
+.status {
+  width: 50px !important;
+}
+
+.status.pending {
+  background-color: rgb(187, 142, 20);
+}
+
+.status.finished {
+  background-color: rgb(7, 107, 7);
+}
