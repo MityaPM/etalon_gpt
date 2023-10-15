@@ -11,8 +11,8 @@ import Push from "./Components/Push/Push"
 // Global auth
 const token = localStorage.getItem("etalonGptToken")
 axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-// axios.defaults.baseURL = "https://dev.alobanov11.ru"
-axios.defaults.baseURL = "http://localhost:3300"
+axios.defaults.baseURL = "https://dev.alobanov11.ru"
+// axios.defaults.baseURL = "http://localhost:3300"
 
 function App() {
   const [logedIn, setLogedIn] = useState(Boolean(token))
